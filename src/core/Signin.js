@@ -5,7 +5,7 @@ import {authenticated} from '../auth'
 import {db} from '../index'
 const Signin = () => {
     const [userSignin, setUserSignin] = useState(
-        {email: '', password: '',redirect: false, error:''}
+        {email: '', password: '',redirect: false, error:false}
     )
     const handleInput = name => e => {
 
@@ -14,7 +14,7 @@ const Signin = () => {
             [name]: e.target.value
         });
     }
-    const {email, redirect, password} = userSignin
+    const {email, redirect, password, error} = userSignin
     const signin = () => {
 
         firebase
@@ -39,6 +39,7 @@ const Signin = () => {
                                 setUserSignin({
                                     ...userSignin,
                                     redirect: true,
+                                    error:false,
                                     userdata: doc.data()
                                 })
                             })
@@ -76,6 +77,7 @@ const Signin = () => {
                 margin: "20px auto"
             }}>
             <h3>Welcome to Signin</h3>
+            {error&&<p>{error}</p>}
             <form>
                 <div className="form-group">
                     <label className='text-muted'><strong>email</strong></label>
