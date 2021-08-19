@@ -4,7 +4,7 @@ import Home from './core/Home'
 import Profile from './core/Profile'
 import Signin from './core/Signin'
 import Signup from './core/Signup'
-
+import ProfileRoute from './privateRoute/ProfileRoute'
 function App() {
     return (
         <div className="App">
@@ -12,7 +12,7 @@ function App() {
                 <Switch>
 
                     <Route path="/" exact component={Home}/> {/* Create a private route to redirect user to signin/signup page */}
-                    <Route path="/profile" exact component={Profile}/>
+                    <ProfileRoute path="/profile" exact component={Profile}/>
                     <Route path="/signin" exact component={Signin}/>
                     <Route path="/signup" exact component={Signup}/>
 
